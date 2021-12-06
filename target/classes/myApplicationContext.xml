@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+                                <!--JDK动态代理-->
+    <!--创建对象在容器中-->
+    <!--目标类-->
+    <bean id="doSome" class="cn.review.SomeServiceImpl"/>
+    <bean id="noImpl" class="cn.review.NotImpl"/>
+    <!--切面类-->
+    <bean id="myAspect" class="cn.review.MyAspect"/>
+
+    <!--自动代理生成器，会在容器中寻找被注解@Aspect注释的类-->
+
+    <!--默认是false,采用JDK动态代理
+    <aop:aspectj-autoproxy proxy-target-class="false"/>-->
+<!--    <aop:aspectj-autoproxy/>-->
+
+    <!--设置为true时为：实现接口时任想采用cglib代理-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+</beans>
